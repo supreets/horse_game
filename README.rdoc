@@ -2,27 +2,30 @@
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
+Explanation about create method
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+def create
+    
+    bundles = params[:bundles].to_i  #total number of bundles
+    distance = params[:distance].to_i #total distance to be covered
+    bundlesperkm = params[:bundlesperkm].to_i #bundles consumed per km by horse
+    bundlesperride = params[:bundlesperride].to_i  #bundles that can be taken by horse per ride
+    
+    d = 0
+    while d < distance
+     if bundles <= 0 #bundles exhausted before completing distance
+       break;
+     end
+     l = (((bundles/bundlesperride)*2 -1) * bundlesperkm) #bundles consumed per km travelled
+     distanceleft = distance - d  #distance remaining to cover
+     if bundles % bundlesperride <= (2*bundlesperkm) #if bundles remaining at previous point are lesser than it would take to move them from that spot to new one,leave them therer
+      bundles -= (bundles % bundlesperride)
+     end
+     kilometerspossible = bundlesperride/l  #kilometers travelled by consuming l bundles every km
+     d1 = distanceleft < kilometerspossible ? distanceleft : kilometerspossible #in last iteration, check if distance remaining<kilometerspossible
+     d += d1
+     bundles -= (d1 * l)
+    end
+   
+     @result = bundles>0 ? bundles : "bundles exhausted before completing distance"
+    end
