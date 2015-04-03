@@ -1,0 +1,23 @@
+<div class= "container">
+<div class= "row">
+    <h1>Horse Bundle Game</h1>
+    <div class = "col-md-6 col-md-offset-3">
+       <%= form_tag("/horseinput", method: "post") do %>
+           <%= label_tag :bundles %>
+            <%= text_field_tag :bundles%>
+   
+            <%= label_tag :distance %>
+            <%= text_field_tag :distance%>
+    
+            <%= label_tag :bundlesperkm%>
+            <%= text_field_tag :bundlesperkm %>
+    
+            <%= label_tag :bundlesperride%>
+            <%= text_field_tag :bundlesperride %>
+    
+          <%= submit_tag "Check Answer", class: "btn btn-primary"%>
+          
+        <% end %>
+   </div>
+ </div>
+ </div>
