@@ -2,6 +2,16 @@
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
+There is a horse that needs to cover a distance from point A to point B. It needs to transport some bundles of hay across these
+two points. The condition is that the horse consumes some number of bundles per km it travels and it can only carry a fixed
+number of bundles at one time. What is the maximum number of bundles that can be transported from point A to point B?
+
+Example:
+3000 - Total number of bundles inititally at point A
+1000 - Distance in km between point A and B 
+1 - Number of bundles the horse eats per km
+1000 - Maximum Number of bundles the horse can carry at one time
+
 Explanation about create method
 
 def create
